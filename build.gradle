@@ -1,0 +1,35 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.17'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	runtimeOnly 'com.mysql:mysql-connector-j'
+	 implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	  implementation 'jakarta.platform:jakarta.jakartaee-api:9.0.0'
+	implementation 'org.springframework.boot:spring-boot-starter'
+implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+}
+tasks.named('bootBuildImage') {
+    builder = 'paketobuildpacks/builder:jvm' // Update to the latest available builder
+}
+tasks.named('test') {
+	useJUnitPlatform()
+}
